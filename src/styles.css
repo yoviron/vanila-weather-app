@@ -1,11 +1,87 @@
 .date {
     text-align: center;
     color: aqua;
+    font-weight: 200;
 }
-h4{
+h4 {
     text-align: center;
 }
 li {
     list-style: none;
     
+}
+.weather-app-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);;
+     
+}
+#form-input {
+    border-radius: 4px;
+}
+
+.btn {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.current-city {
+    margin-left: 10px;
+    font-size: 25px;
+}
+    
+.condition {
+    margin-top: 8px;
+}
+#current  {
+    
+    font-size: 30px;
+    position: relative;
+    color: yellow;
+    text-align: center;
+    max-width: 150px;
+    margin-left: 63px;
+    margin-top: 5px;
+    
+}
+.description {
+    
+    text-align: center;
+    max-width: 160px;
+    margin-top: 5px: ;
+}
+.temperature {
+    font-size: 45px;
+    margin-left: 55px;
+}
+.units {
+    position: relative;
+    font-size: 15px;
+    top: -22px;
+}
+.day-forecast {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+.card-body {
+    
+    padding-left: 0px;
+    padding-right: 0;
+    margin-right: 0;
+    
+    text-align: center;
+
+       
+}
+#card {
+        margin-left: 0;
+        margin-right: 0;
+        
+}
+
+h5 {
+    font-size: 16px;
 }
