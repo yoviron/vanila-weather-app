@@ -53,12 +53,22 @@ li {
 }
 .temperature {
     font-size: 45px;
-    margin-left: 55px;
+    margin-left: 50px;
+    margin-right: 0;
+    padding: 0;
 }
 .units {
     position: relative;
     font-size: 15px;
     top: -22px;
+}
+.fahr {
+    margin: 0;
+    padding: 0;
+}
+.cels {
+    margin-left: 0;
+    padding: 0;
 }
 .day-forecast {
     text-align: center;
