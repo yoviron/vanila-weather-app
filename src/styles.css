@@ -41,7 +41,7 @@ li {
     position: relative;
     
 }
-#current  {
+#icon {
     
     font-size: 30px;
     position: relative;
@@ -57,6 +57,7 @@ li {
     
     margin-top: 5px;
     text-transform: capitalize;
+    font-weight: normal;
 }
 .temperature strong {
     font-size: 45px;
