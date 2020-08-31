@@ -1,7 +1,13 @@
 let now = new Date();
 let date = now.getDate();
 let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  munutes = `0${minutes}`;
+}
 let days = [
   "Sunday",
   "Monday",
@@ -31,12 +37,6 @@ let heather = document.querySelector("h1");
 heather.innerHTML = `${day}, ${month} ${date}`;
 let h4 = document.querySelector(".hour");
 h4.innerHTML = `${hours}:${minutes}`;
-if (minutes < 10) {
-  munutes = `0${minutes}`;
-}
-if (hours < 10) {
-  hours = `0${hours}`;
-}
 function showWeather(response) {
   
 
@@ -55,9 +55,19 @@ function showWeather(response) {
    
   
 }
-
+function search(city){
 let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
-let city = "Atlanta";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
 axios.get(apiUrl).then(showWeather);
+}
+
+
+function handleSubmit(event) {
+event.preventDefault();
+let cityInputElement=document.querySelector("#city-input");
+search(cityInputElement.value);
+console.log(cityInputElement.value);
+}
+
+let form= document.querySelector("#form");
+form.addEventListener("submit", handleSubmit);
