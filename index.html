@@ -22,19 +22,22 @@
         </h4>
         <hr>
         <div class="container">
-            <form id="form">
+            <form id="form" class="mb-3">
             <div class="row">
-                <div class="col-4">
+                <div class="col-8">
                   <input type="search"
-                  class="form-input" 
+                  
                   id="city-input"  
                   placeholder="Enter city"
+                  class="form-control"
                   autocomplete="off"
                   />
                 </div>
                 
-                
-                 <input type="submit" value="search" class="btn btn-primary"/>
+                <div class="col-4" >
+                   <input type="submit" value="search" class="btn btn-primary" w-100/>
+                 
+                </div>
                 
             
             </div>
@@ -44,10 +47,10 @@
                     <div class="form-groop">
                         <h1 class="current-city" id="city"></h1>
                         
-                            <h5 class="description" id="description">sunny</h5>
+                            <h5 class="description" id="description"></h5>
                              <img src=" http://openweathermap.org/img/wn/10d@2x.png" alt="" id="icon" />
                               
-                            <div class="temperature"><strong id="temperature">95</strong>
+                            <div class="temperature"><strong id="temperature"></strong>
                                 <span class="units">
                                     <a href="#"id="celsius-link">°C</a> |
                                     <a href="#" id="fahrenheit-link">°F</a>
