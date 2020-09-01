@@ -80,8 +80,8 @@ function displayFahrenheitTemperature(event) {
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement = Math.round(celsiusTemperature);
-  console.log(celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  
 
 }
 let celsiusTemperature = null;
