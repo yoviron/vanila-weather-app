@@ -1,3 +1,4 @@
+
 let now = new Date();
 let date = now.getDate();
 let hours = now.getHours();
@@ -18,6 +19,7 @@ let days = [
   "Saturday",
 ];
 let day = days[now.getDay()];
+
 let months = [
   "January",
   "February",
@@ -55,13 +57,41 @@ function showWeather(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = response.data.wind.speed;
   iconElement.setAttribute("src",` http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-   
+}  
+
+function showForecast(response) {
+  let forecastElement=document.querySelector("#forecast");
+  let forecast = response.data.list[0];
+
+  console.log(forecast);
+  forecastElement.innerHTML = `
   
-}
+    <div class ="col-2">
+        <h5 class="next-day">
+          ${day}
+        </h5>
+          <img src=" http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"  id = "weather-icon" />
+        <div  class="forecast-temp">     
+          <strong>${Math.round(forecast.main.temp_max)}°</strong>${Math.round(forecast.main.temp_min)}
+          <span class="forecast-units">
+            <a href="#"id="celsius-link">°C</a> |
+            <a href="#" id="fahrenheit-link">°F</a>
+          </span>
+        </div>      
+    </div>
+  `;
+  
+
+
+} 
+  
 function search(city){
 let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showWeather);
+
+apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showForecast);  
 }
 
 

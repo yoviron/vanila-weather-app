@@ -84,22 +84,25 @@ li {
     margin-bottom: 5px;
     font-weight: lighter;
 }
-.card-body {
-    
-    padding-left: 0px;
-    padding-right: 0;
-    margin-right: 0;
-    
+
+.col-2 {
     text-align: center;
-
-       
 }
-#card {
-        margin-left: 0;
-        margin-right: 0;
-        
-}
-
-h5 {
+.next-day {
+    margin-left: 25px;
     font-size: 16px;
 }
+
+#weather-icon {
+    font-size: 15px;
+}
+
+.forecast-temp {
+   margin-left: 30px;
+    
+
+}
+.forecast-units {
+    position: relative;
+}     
+    
