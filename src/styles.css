@@ -41,9 +41,9 @@ li {
 }
 #icon {
     
-    font-size: 30px;
+    
     position: relative;
-    color: yellow;
+    
     text-align: center;
     
     
@@ -71,8 +71,8 @@ li {
 }
 
 .col-5 {
-   margin-left: 100px;
-
+    margin-left: 100px;
+    
 }
 .cels {
     margin-left: 0;
@@ -86,23 +86,38 @@ li {
 }
 
 .col-2 {
-    text-align: center;
+    padding-right: 0;
+    padding-left: 0;
 }
 .next-day {
-    margin-left: 25px;
     font-size: 16px;
+    margin-left: 0px;
+    text-align: center;
+}
+
+.units.active {
+    color: black;
+    cursor: default;
+}
+.units.active :hover {
+    text-decoration: none;
 }
 
 #weather-icon {
-    font-size: 15px;
+    font-size: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
 .forecast-temp {
-   margin-left: 30px;
+   margin-left: 10px;
+   text-align: center;
     
 
 }
 .forecast-units {
     position: relative;
+    margin-left: 0;
+    padding-left: 0;
 }     
     

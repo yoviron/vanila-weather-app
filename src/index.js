@@ -1,14 +1,8 @@
+function formatDate(timestamp) {
+ let now= new Date(timestamp);
 
-let now = new Date();
-let date = now.getDate();
-let hours = now.getHours();
-if (hours < 10) {
-  hours= `0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes=`0${minutes}`;
-}
+
+
 let days = [
   "Sunday",
   "Monday",
@@ -19,6 +13,7 @@ let days = [
   "Saturday",
 ];
 let day = days[now.getDay()];
+
 
 let months = [
   "January",
@@ -34,12 +29,31 @@ let months = [
   "November",
   "December",
 ];
-let month = months[now.getMonth()];
-let heather = document.querySelector("h1");
-heather.innerHTML = `${day}, ${month} ${date}`;
-let h4 = document.querySelector(".hour");
-h4.innerHTML = `${hours}:${minutes}`;
+  let month = months[now.getMonth()];
+  let heather = document.querySelector("h1");
+  heather.innerHTML = `${day}, ${month} ${date}`;
+  let h4 = document.querySelector(".hour");
+  h4.innerHTML = `${formatHours(timestamp)}`;
+}  
+  
+
+
+function formatHours(timestamp) {
+  let now = new Date(timestamp);
+  let date = now.getDate();
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 function showWeather(response) {
+
   
  
   let temperatureElement = document.querySelector("#temperature");
@@ -61,29 +75,34 @@ function showWeather(response) {
 
 function showForecast(response) {
   let forecastElement=document.querySelector("#forecast");
-  let forecast = response.data.list[0];
+  forecastElement.innerHTML=null;
+  forecast=null;
+  
+  for (let index=0; index<6; index ++){
 
-  console.log(forecast);
-  forecastElement.innerHTML = `
+  forecast = response.data.list[index];
+  forecastElement.innerHTML += `
+  
   
     <div class ="col-2">
         <h5 class="next-day">
-          ${day}
+          ${formatHours(forecast.dt*1000)}
         </h5>
           <img src=" http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"  id = "weather-icon" />
         <div  class="forecast-temp">     
-          <strong>${Math.round(forecast.main.temp_max)}°</strong>${Math.round(forecast.main.temp_min)}
-          <span class="forecast-units">
-            <a href="#"id="celsius-link">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a>
-          </span>
+          <strong>${Math.round(forecast.main.temp_max)}°</strong>${Math.round(forecast.main.temp_min)}°
+          <div class="forecast-units">
+            <a href="#"id="celsius-link">C</a> |
+            <a href="#" id="fahrenheit-link">F</a>
+          </div>
         </div>      
     </div>
   `;
+ }
   
-
-
 } 
+
+  
   
 function search(city){
 let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
@@ -104,12 +123,17 @@ search(cityInputElement.value);
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement= document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   
 
