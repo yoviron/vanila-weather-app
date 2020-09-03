@@ -30,10 +30,11 @@ let months = [
   "December",
 ];
 let month = months[now.getMonth()];
-return`${day}, ${month} ${now.getDate()`};
+return`${day}, ${month} ${now.getDate()}`;
 }   
 
 function formatHours(timestamp) {
+  
   let now = new Date(timestamp);
   let date = now.getDate();
   let hours = now.getHours();
