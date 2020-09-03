@@ -29,14 +29,9 @@ let months = [
   "November",
   "December",
 ];
-  let month = months[now.getMonth()];
-  let heather = document.querySelector("h1");
-  heather.innerHTML = `${day}, ${month} ${date}`;
-  let h4 = document.querySelector(".hour");
-  h4.innerHTML = `${formatHours(timestamp)}`;
-}  
-  
-
+let month = months[now.getMonth()];
+return`${day}, ${month} ${now.getDate()`};
+}   
 
 function formatHours(timestamp) {
   let now = new Date(timestamp);
@@ -49,8 +44,15 @@ function formatHours(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${hours}:${minutes}`;
+  return `${hours}:${minutes}`
 }
+let timestamp = new Date();
+let heather = document.querySelector("h1");
+heather.innerHTML = `${formatDate(timestamp)}`;
+let h4 = document.querySelector(".hour");
+h4.innerHTML = `${formatHours(timestamp)}`;
+  
+
 
 function showWeather(response) {
 
