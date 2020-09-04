@@ -119,5 +119,14 @@ li {
     position: relative;
     margin-left: 0;
     padding-left: 0;
-}     
+}
+.btn-primary.col-3 {
+    margin-right: 0;
+    padding-right: 0;
+}
+i {
+    margin-left: 0;
+    padding-left: 0 ;
+    
+}
     
