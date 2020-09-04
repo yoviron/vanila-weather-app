@@ -104,16 +104,30 @@ function showForecast(response) {
  }
   
 } 
+function findCity(position){
+  
+  let lat=position.coords.latitude;
+  let lon=position.coords.longitude;
+  let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
 
+  apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+ 
+  axios.get(apiUrl).then(showWeather);
+}
+ 
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(findCity);
+
+}
   
   
 function search(city){
 let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(showWeather);
-
+  axios.get(apiUrl).then(showWeather);
 apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showForecast);  
+
 }
 
 
@@ -151,5 +165,8 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink= document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+let currentCity= document.querySelector("#current-city");
+currentCity.addEventListener("click", getCurrentPosition);
 
 search("Atlanta");
