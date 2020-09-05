@@ -1,6 +1,6 @@
 .heather{
     text-align: center;
-    color: aqua;
+    
     font-weight: 200;
 }
 h4 {
@@ -17,6 +17,7 @@ li {
     border: 1px solid lightgray;
     border-radius: 5px;
     background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);;
+    padding-right: 0;
      
 }
 #form-input {
@@ -72,7 +73,7 @@ li {
 }
 
 .col-5 {
-    margin-left: 100px;
+   padding-right: 0;
     
 }
 .cels {
@@ -131,9 +132,9 @@ li {
     margin-left: 0;
     padding-left: 0;
 }
-.btn-primary.col-3 {
-    margin-right: 0;
-    padding-right: 0;
+
+.btn-success {
+    margin-left: 15px;
 }
 i {
     margin-left: 0;

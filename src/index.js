@@ -93,12 +93,10 @@ function showForecast(response) {
         </h5>
           <img class="weather-icon" src=" http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"  id = "weather-icon" />
         <div  class="forecast-temp">     
-          <strong>${Math.round(forecast.main.temp_max)}°</strong>${Math.round(forecast.main.temp_min)}°
+          <strong>
+          <span  class="max-temp">${Math.round(forecast.main.temp_max)}</span>°</strong> / <span class="min-temp">${Math.round(forecast.main.temp_min)}</span>°
           </div>
-          <div class="forecast-units">
-            <a href="#"id="celsius-link">C</a> |
-            <a href="#" id="fahrenheit-link">F</a>
-          </div>
+          
         </div>      
     </div>
   `;
@@ -127,6 +125,7 @@ let apiKey = "3e050f75e6d0f064cfedf4c3fb91df60";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 apiUrl =`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
 axios.get(apiUrl).then(showForecast);  
 
 }
@@ -135,6 +134,7 @@ axios.get(apiUrl).then(showForecast);
 function handleSubmit(event) {
 event.preventDefault();
 let cityInputElement=document.querySelector("#city-input");
+console.log()
 search(cityInputElement.value);
 
 }
@@ -143,20 +143,56 @@ function displayFahrenheitTemperature(event) {
   let temperatureElement= document.querySelector("#temperature");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+  celsiusLink.addEventListener("click",displayCelsiusTemperature);
+  fahrenheitLink.removeEventListener("click",displayFahrenheitTemperature);
   fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  
+  let lowElement =document.querySelectorAll(".min-temp");
+  lowElement.forEach(function(low) {
+    let currentTemp= low.innerHTML;
+    
+    low.innerHTML=`${Math.round((currentTemp)*9/5+32)}`
+    return lowElement;
+  });
+  let highElement=document.querySelectorAll(".max-temp");
+  highElement.forEach(function(high) {
+    let currentTemp=high.innerHTML;
+    high.innerHTML=`${Math.round((currentTemp)*9/5+32)}`
+    return highElement; 
+  });
 }
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  celsiusLink.removeEventListener("click",displayCelsiusTemperature);
+  fahrenheitLink.addEventListener("click",displayFahrenheitTemperature);
   
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   
+  let lowElement=document.querySelectorAll(".min-temp");
+  lowElement.forEach(function(low) {
+    let currentTemp=low.innerHTML;
+    low.innerHTML=`${Math.round(((currentTemp-32)*5)/9)}`
+  
+  });
 
+  let highElement =document.querySelectorAll(".max-temp");
+  highElement.forEach(function(high) {
+  
+  let currentTemp = high.innerHTML;
+  high.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`
+  
+  });
 }
+
+
+
+
 let celsiusTemperature = null;
+
 
 let form= document.querySelector("#form");
 form.addEventListener("submit", handleSubmit);
@@ -166,6 +202,9 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink= document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+
+
 
 let currentCity= document.querySelector("#current-city");
 currentCity.addEventListener("click", getCurrentPosition);
