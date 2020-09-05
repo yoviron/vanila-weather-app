@@ -87,13 +87,14 @@ function showForecast(response) {
   forecastElement.innerHTML += `
   
   
-    <div class ="col-2">
+    <div class ="col-sm-2">
         <h5 class="next-day">
           ${formatHours(forecast.dt*1000)}
         </h5>
-          <img src=" http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"  id = "weather-icon" />
+          <img class="weather-icon" src=" http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"  id = "weather-icon" />
         <div  class="forecast-temp">     
           <strong>${Math.round(forecast.main.temp_max)}°</strong>${Math.round(forecast.main.temp_min)}°
+          </div>
           <div class="forecast-units">
             <a href="#"id="celsius-link">C</a> |
             <a href="#" id="fahrenheit-link">F</a>

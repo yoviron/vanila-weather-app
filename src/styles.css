@@ -12,7 +12,7 @@ li {
     
 }
 .weather-app-wrapper {
-    max-width: 600px;
+    max-width: 660px;
     margin: 0 auto;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -40,11 +40,12 @@ li {
     
 }
 #icon {
-    
-    
+    display: block;
+    margin: 0 auto;
     position: relative;
+    size: 24px;
     
-    text-align: center;
+    
     
     
     
@@ -85,14 +86,17 @@ li {
     font-weight: lighter;
 }
 
-.col-2 {
+.col-sm-2 {
     padding-right: 0;
     padding-left: 0;
+    text-align: center;
+    border: 1px solid lightslategray;
 }
 .next-day {
     font-size: 16px;
     margin-left: 0px;
     text-align: center;
+    margin-top: 10px;
 }
 
 .units.active {
@@ -100,14 +104,20 @@ li {
     cursor: default;
 }
 .units.active :hover {
+    color: blue;
     text-decoration: none;
 }
 
-#weather-icon {
-    font-size: 10px;
+.weather-icon img {
+    
     display: block;
     margin: 0 auto;
+    height: 50;
+    width: 60;
+   
+    
 }
+
 
 .forecast-temp {
    margin-left: 10px;
@@ -116,6 +126,7 @@ li {
 
 }
 .forecast-units {
+    text-align: center;
     position: relative;
     margin-left: 0;
     padding-left: 0;
@@ -128,5 +139,11 @@ i {
     margin-left: 0;
     padding-left: 0 ;
     
+}
+.container {
+    padding: 0;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
 }
     
