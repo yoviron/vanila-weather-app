@@ -115,9 +115,9 @@ function findCity(position){
 }
  
 function getCurrentPosition() {
-  navigator.geolocation.getCurrentPosition(findCity);
-
+  
 }
+navigator.geolocation.getCurrentPosition(findCity);
   
   
 function search(city){
